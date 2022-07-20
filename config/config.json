@@ -1,0 +1,12 @@
+{
+  "local": {
+    "host": "localhost",
+    "database": "student_management",
+    "username": "root",
+    "password": "mamta123",
+    "port": 5432,
+    "dialect": "mysql",
+    "logging": true,
+    "migrationStorageTableName": "sequelize_meta"
+  }
+}
