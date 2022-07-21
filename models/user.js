@@ -16,10 +16,8 @@ module.exports = (sequelize, DataTypes) => {
         'email',
         'contactNumber',
         'password',
-        'resetOtp',
         'createdAt',
         'updatedAt',
-        'deviceInformation',
         'roleId',
       ];
 

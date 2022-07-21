@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "NODE_ENV=test nodemon server",
+    "start": "NODE_ENV=production nodemon server",
+    "kill-port": "sudo kill -9 $(sudo lsof -t -i:5555)"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.6.2",
     "uuidv4": "^6.2.12",
     "validatorjs": "^3.22.1"
