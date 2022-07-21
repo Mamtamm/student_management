@@ -1,8 +1,6 @@
 const { handleEx } = require('../../helper/handle_ex');
-const { sendEmail, renderTemplate } = require('../../helper/email');
 const { validate } = require('../../helper/validator');
 const { User } = require('../../models');
-const moment = require('moment');
 
 const passwordRule = {
   password: 'required',
@@ -24,17 +22,9 @@ module.exports = async (req, res) => {
     user.password = password;
     user.resetOtp = '';
 
-    const html = renderTemplate('create_password', [
-      ['{{clientName}}', process.env.CLIENT_NAME],
-      ['{{userName}}', user.firstName + ' ' + user.lastName],
-      ['{{user}}', user.firstName || user.lastName],
-      ['{{address}}', process.env.CLIENT_ADDRESS],
-    ]);
-
     user
       .save()
       .then(async (c) => {
-        await sendEmail(user.email, 'Your PassWord Was Created', html);
         return res.status(202).send();
       })
       .catch((ex) => {

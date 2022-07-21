@@ -30,9 +30,6 @@ module.exports = {
         email: { type: Sequelize.STRING },
         contact_number: { type: Sequelize.STRING },
         password: { type: Sequelize.STRING },
-        reset_otp: { type: Sequelize.STRING, allownull: true},
-        profile_url: { type: Sequelize.STRING, allownull: true },
-        device_information: { type: Sequelize.JSONB },
         role_id: {
           type: Sequelize.UUID,
           onDelete: 'CASCADE',

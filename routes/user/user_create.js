@@ -3,9 +3,6 @@ const { Op } = require('sequelize');
 const { handleEx } = require('../../helper/handle_ex');
 const { User, Role, sequelize } = require('../../models');
 const { validate } = require('../../helper/validator');
-const { sendEmail, renderTemplate } = require('../../helper/email');
-const moment = require('moment');
-var fs = require('fs');
 
 const postUserRule = {
   firstName: 'required|string',
@@ -57,15 +54,6 @@ module.exports = async (req, res) => {
           },
         ],
       });
-
-      const html = renderTemplate('invite', [
-        ['{{clientName}}', process.env.CLIENT_NAME],
-        ['{{userName}}', user.firstName + ' ' + user.lastName],
-        ['{{user}}', user.firstName || user.lastName],
-        ['{{address}}', process.env.CLIENT_ADDRESS],
-      ]);
-
-      await sendEmail(user.email, 'Your Account was Created', html);
       return res.json(findUser);
     }
   } catch (ex) {
